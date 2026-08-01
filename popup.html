@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <div class="header-title">
+        <svg class="header-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <h1>Dashboard Settings</h1>
+      </div>
+      <p class="header-subtitle">Customize themes & background</p>
+    </header>
+
+    <main class="popup-content">
+      <!-- Section 1: Background Settings -->
+      <section class="setting-card">
+        <h3>Background Settings</h3>
+        <div class="input-stack">
+          <input type="text" id="url" placeholder="Image or Video URL">
+          <div class="button-row">
+            <button id="apply" class="btn btn-primary">Apply URL</button>
+            <button id="upload" class="btn btn-secondary">Upload File</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Theme Settings -->
+      <section class="setting-card">
+        <h3>Theme Settings</h3>
+        <div class="input-stack">
+          <select id="theme-select" class="neo-select">
+            <option value="minimal">Minimal Light</option>
+            <option value="dark">Neomorphic Dark</option>
+            <option value="cyberpunk">Cyberpunk Neon</option>
+            <option value="nature">Nature Forest</option>
+            <option value="productivity">Productivity Sunset</option>
+          </select>
+          <div class="button-row">
+            <button id="shuffle-theme" class="btn btn-secondary">Shuffle Theme</button>
+          </div>
+          <label class="checkbox-label">
+            <input type="checkbox" id="auto-shuffle">
+            <span class="custom-checkbox"></span>
+            <span>Auto Shuffle on New Tab</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Section 3: Create Custom Theme -->
+      <section class="setting-card">
+        <h3>Create Custom Theme</h3>
+        <div class="input-stack">
+          <input type="text" id="custom-bg" placeholder="Background URL / CSS Color">
+          <div class="color-picker-row">
+            <label>Card Color: <input type="color" id="custom-card-bg" value="#e0e0e0"></label>
+            <label>Text Color: <input type="color" id="custom-text" value="#333333"></label>
+          </div>
+          <input type="text" id="custom-shadow" placeholder="Custom Box Shadow (Optional)">
+          <button id="save-custom-theme" class="btn btn-primary">Save Custom Theme</button>
+          <div class="button-row">
+            <button id="export-theme" class="btn btn-secondary">Export JSON</button>
+            <button id="import-theme" class="btn btn-secondary">Import JSON</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Theme Gallery -->
+      <section class="setting-card">
+        <h3>Theme Gallery</h3>
+        <ul id="theme-gallery" class="widget-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Glassmorphism Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <!-- Dynamic Liquid Background Layer -->
+  <div id="background">
+    <div class="liquid-orb orb-1"></div>
+    <div class="liquid-orb orb-2"></div>
+    <div class="liquid-orb orb-3"></div>
+  </div>
+  <div id="background-overlay"></div>
+
+  <!-- Left Side Floating Animated Sidebar Trigger Button -->
+  <button id="sidebar-toggle" class="sidebar-toggle-btn" title="Hover or Click to open Dashboard Sidebar">
+    <svg class="toggle-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.2" fill="none">
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="16" y2="12"></line>
+      <line x1="4" y1="18" x2="12" y2="18"></line>
+    </svg>
+    <span class="pulse-ring"></span>
+  </button>
+
+  <!-- Collapsible Side Navbar Drawer (Slide out on hover or button click) -->
+  <aside id="side-navbar" class="side-navbar">
+    <!-- Drawer Header: Settings & Title -->
+    <div class="drawer-header">
+      <h2 class="drawer-title">Dashboard</h2>
+      <button id="open-settings-modal" class="btn btn-icon settings-btn" title="Open Settings & Tuning">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Clock Widget -->
+    <div class="clock-card glass-card side-clock">
+      <h1 id="clock">00:00:00</h1>
+      <p id="date-display" class="date-subtitle">Loading date...</p>
+    </div>
+
+    <!-- Search Bar Widget -->
+    <div class="search-card side-search">
+      <div class="search-input-group">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" placeholder="Search Google or URL..." autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Bookmarks Widget Section -->
+    <div class="side-bookmarks-container">
+      <div class="side-section-label">Shortcuts</div>
+      <div id="bookmark-list" class="floating-bookmarks-row"></div>
+    </div>
+
+    <!-- To-Do List Widget -->
+    <div class="card widget-card todo-widget glass-card side-todo">
+      <div class="card-header">
+        <svg class="card-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        <h2>To-Do List</h2>
+        <button id="open-todo-modal" class="btn btn-sm btn-icon" title="Add Task">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+      </div>
+      <ul id="todo-list" class="widget-list"></ul>
+    </div>
+  </aside>
+
+  <!-- Bookmark Add Modal Overlay -->
+  <div id="bookmark-modal" class="modal-overlay hidden">
+    <div class="modal-card card glass-card">
+      <div class="modal-header">
+        <h3>Add New Bookmark</h3>
+        <button id="close-bookmark-modal" class="action-btn-delete" title="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="input-stack">
+        <input type="text" id="bookmark-name" placeholder="Title (e.g. YouTube)">
+        <input type="text" id="bookmark-url" placeholder="URL (e.g. youtube.com)">
+        <button id="add-bookmark" class="btn btn-primary">Add Bookmark</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- To-Do Add Modal Overlay -->
+  <div id="todo-modal" class="modal-overlay hidden">
+    <div class="modal-card card glass-card">
+      <div class="modal-header">
+        <h3>Add New Task</h3>
+        <button id="close-todo-modal" class="action-btn-delete" title="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="input-stack">
+        <input type="text" id="todo-input" placeholder="Task description...">
+        <button id="add-todo" class="btn btn-primary">Add Task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Tuning Modal Overlay -->
+  <div id="settings-modal" class="modal-overlay hidden">
+    <div class="modal-card card settings-modal-card glass-card">
+      <div class="modal-header">
+        <h3>Dashboard Settings & Tuning</h3>
+        <button id="close-settings-modal" class="action-btn-delete" title="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      
+      <div class="settings-modal-body">
+        <!-- Background Tuning -->
+        <div class="settings-group">
+          <h4>Background Settings</h4>
+          <div class="input-stack">
+            <input type="text" id="url" placeholder="Image or Video URL">
+            <div class="button-row">
+              <button id="apply" class="btn btn-primary">Apply URL</button>
+              <button id="upload" class="btn btn-secondary">Upload File</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Tuning -->
+        <div class="settings-group">
+          <h4>Theme Settings</h4>
+          <div class="input-stack">
+            <select id="theme-select" class="neo-select">
+              <option value="minimal">Minimal Glass</option>
+              <option value="dark">Dark Liquid Glass</option>
+              <option value="cyberpunk">Cyberpunk Neon Glass</option>
+              <option value="nature">Nature Forest Glass</option>
+              <option value="productivity">Sunset Liquid Glass</option>
+            </select>
+            <div class="button-row">
+              <button id="shuffle-theme" class="btn btn-secondary">Shuffle Theme</button>
+            </div>
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-shuffle">
+              <span class="custom-checkbox"></span>
+              <span>Auto Shuffle on New Tab</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Custom Theme Tuning -->
+        <div class="settings-group">
+          <h4>Create Custom Theme</h4>
+          <div class="input-stack">
+            <input type="text" id="custom-bg" placeholder="Background URL / CSS Color">
+            <div class="color-picker-row">
+              <label>Card Color: <input type="color" id="custom-card-bg" value="#ffffff"></label>
+              <label>Text Color: <input type="color" id="custom-text" value="#ffffff"></label>
+            </div>
+            <input type="text" id="custom-shadow" placeholder="Custom Box Shadow (Optional)">
+            <button id="save-custom-theme" class="btn btn-primary">Save Custom Theme</button>
+            <div class="button-row">
+              <button id="export-theme" class="btn btn-secondary">Export JSON</button>
+              <button id="import-theme" class="btn btn-secondary">Import JSON</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Gallery -->
+        <div class="settings-group">
+          <h4>Theme Gallery</h4>
+          <ul id="theme-gallery" class="widget-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
