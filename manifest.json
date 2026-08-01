@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Neomorphism Dashboard",
+  "name": "Neo Theme",
   "version": "1.0",
   "author": "Sampatakumar",
   "portfolio": "https://sampatakumar.github.io/",
   "github": "https://github.com/sampatakumar/Neo-Tab-Theme",
-  "description": "Custom new tab dashboard with neomorphism style, backgrounds, themes, and productivity widgets.",
+  "description": "Custom new tab page with Glass morphism style, backgrounds, themes, and productivity widgets.",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
