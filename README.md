@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Manifest-V3-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Chrome-Compatible-success?style=for-the-badge" />
+ 
   <img src="https://img.shields.io/badge/Microsoft%20Edge-Compatible-0078D7?style=for-the-badge" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
 </p>
