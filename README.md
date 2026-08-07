@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
 </p>
 
-**NeoMorph Theme** is a modern **Chrome & Microsoft Edge New Tab Extension** built using **Manifest V3** with a beautiful **Liquid Glassmorphism** design system.
+**NeoMorph Theme** is a modern ** Microsoft Edge New Tab Extension** built using **Manifest V3** with a beautiful **Liquid Glassmorphism** design system.
 
 Designed to keep your desktop wallpaper completely unobstructed while providing powerful productivity tools through a sleek, collapsible sidebar.
 
